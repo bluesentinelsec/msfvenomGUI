@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "msfvenomgui"
+version = "0.1.0"
+description = "TODO-description"
+authors = ["bluesentinelsec <bluesentinel@protonmail.com>"]
+license = "GPL-3.0-only"
+readme = "README.md"
+
+[tool.poetry.scripts]
+msfvenomgui = "msfvenomgui.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pytest = "^7.3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
