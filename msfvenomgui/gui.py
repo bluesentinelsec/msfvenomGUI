@@ -2,9 +2,14 @@ import tkinter as tk
 import tkinter.filedialog as fd
 import tkinter.ttk as ttk
 
+import command_builder
 
 class GUI:
     def __init__(self):
+
+        self.cmd = command_builder.CommandBuilder()
+
+
         self.main_window = tk.Tk()
         self.main_window.title = "msfvenom-gui"
 
@@ -20,30 +25,31 @@ class GUI:
 
         # row 2: payload
         self.label_payload = ttk.Label(master=self.widget_frame, text="Payload:", justify="right")
-        self.combobox_payload = ttk.Combobox(master=self.widget_frame) # TODO: populate this
+        self.combobox_payload = ttk.Combobox(master=self.widget_frame, values=command_builder.PAYLOADS) # TODO: populate this
 
         # row 3: exe format
         self.label_exe_format = ttk.Label(master=self.widget_frame, text="Executable format:", justify="right")
-        self.combobox_exe_format = ttk.Combobox(master=self.widget_frame)
+        self.combobox_exe_format = ttk.Combobox(master=self.widget_frame, values=command_builder.EXE_FORMAT)
 
 
         # row 4: transform format
         self.label_transform_format = ttk.Label(master=self.widget_frame, text="Transform format:", justify="right")
-        self.combobox_transform_format = ttk.Combobox(master=self.widget_frame)
+        self.combobox_transform_format = ttk.Combobox(master=self.widget_frame, values=command_builder.TRANSFORM_FORMAT)
 
         # row 5: encoder
         self.label_encoder = ttk.Label(master=self.widget_frame, text="Encoding:", justify="right")
-        self.combobox_encoder = ttk.Combobox(master=self.widget_frame)
+        self.combobox_encoder = ttk.Combobox(master=self.widget_frame, values=command_builder.ENCODING)
 
         # row 6: LHOST and RHOST
         self.label_lhost = ttk.Label(master=self.widget_frame, text="LHOST:", justify="right")
         self.entry_lhost = ttk.Entry(master=self.widget_frame)
-        self.label_rhost = ttk.Label(master=self.widget_frame, text="RHOST:", justify="right")
-        self.entry_rhost = ttk.Entry(master=self.widget_frame)
-
-        # row 7: LPORT and RPORT
         self.label_lport = ttk.Label(master=self.widget_frame, text="LPORT:", justify="right")
         self.entry_lport = ttk.Entry(master=self.widget_frame)
+
+
+        # row 7: LPORT and RPORT
+        self.label_rhost = ttk.Label(master=self.widget_frame, text="RHOST:", justify="right")
+        self.entry_rhost = ttk.Entry(master=self.widget_frame)
         self.label_rport = ttk.Label(master=self.widget_frame, text="RPORT:", justify="right")
         self.entry_rport = ttk.Entry(master=self.widget_frame)
 
@@ -64,7 +70,8 @@ class GUI:
         self.label_generated_command = ttk.Label(master=self.widget_frame)
 
         # row 12: output window
-        self.label_console_output = ttk.Label(master=self.widget_frame)
+        self.label_console_output = tk.Text(master=self.widget_frame)
+        self.label_console_output.insert(tk.END, command_builder.LORUM)
 
         # place widgets on grid:
         self.label_msfvenom_exe.grid(row=0)
@@ -84,11 +91,11 @@ class GUI:
 
         self.label_lhost.grid(row=5)
         self.entry_lhost.grid(row=5, column=1)
-        self.label_rhost.grid(row=6)
-        self.entry_rhost.grid(row=6, column=1)
+        self.label_lport.grid(row=6)
+        self.entry_lport.grid(row=6, column=1)
 
-        self.label_lport.grid(row=7)
-        self.entry_lport.grid(row=7, column=1)
+        self.label_rhost.grid(row=7)
+        self.entry_rhost.grid(row=7, column=1)
         self.label_rport.grid(row=8)
         self.entry_rport.grid(row=8, column=1)
 
@@ -102,7 +109,7 @@ class GUI:
 
         self.label_command.grid(row=12)
         self.label_generated_command.grid(row=13, column=1)
-        self.label_console_output.grid(row=14)
+        self.label_console_output.grid(row=14, columnspan=2)
 
 
         tk.mainloop()
