@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-import gui
+from gui import GUI
 
 
 def main():
-    ui = gui.GUI()
+    ui = GUI()
 
 
 if __name__ == "__main__":

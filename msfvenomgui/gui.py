@@ -1,13 +1,13 @@
-import command_builder
 import tkinter as tk
 import tkinter.ttk as ttk
 
+from command_builder import *
 from subprocess import Popen, PIPE
 
 
 class GUI:
     def __init__(self):
-        self.cmd = command_builder.CommandBuilder()
+        self.cmd = CommandBuilder()
 
         self.main_window = tk.Tk()
         self.main_window.title("msfvenom-gui")
@@ -26,21 +26,21 @@ class GUI:
         # row 2: payload
         self.label_payload = ttk.Label(master=self.widget_frame, text="Payload:", justify="right")
         self.combobox_payload = ttk.Combobox(master=self.widget_frame,
-                                             values=command_builder.PAYLOADS, width=25)
+                                             values=PAYLOADS, width=25)
         self.combobox_payload.current(1)
 
         # row 3: exe format
         self.label_exe_format = ttk.Label(master=self.widget_frame, text="Executable format:", justify="right")
-        self.combobox_exe_format = ttk.Combobox(master=self.widget_frame, values=command_builder.EXE_FORMAT, width=25)
+        self.combobox_exe_format = ttk.Combobox(master=self.widget_frame, values=EXE_FORMAT, width=25)
 
         # row 4: transform format
         self.label_transform_format = ttk.Label(master=self.widget_frame, text="Transform format:", justify="right")
-        self.combobox_transform_format = ttk.Combobox(master=self.widget_frame, values=command_builder.TRANSFORM_FORMAT,
+        self.combobox_transform_format = ttk.Combobox(master=self.widget_frame, values=TRANSFORM_FORMAT,
                                                       width=25)
 
         # row 5: encoder
         self.label_encoder = ttk.Label(master=self.widget_frame, text="Encoding:", justify="right")
-        self.combobox_encoder = ttk.Combobox(master=self.widget_frame, values=command_builder.ENCODING, width=25)
+        self.combobox_encoder = ttk.Combobox(master=self.widget_frame, values=ENCODING, width=25)
 
         # row 6: LHOST and RHOST
         self.label_lhost = ttk.Label(master=self.widget_frame, text="LHOST:", justify="right")
