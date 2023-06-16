@@ -27,6 +27,7 @@ class GUI:
         self.label_payload = ttk.Label(master=self.widget_frame, text="Payload:", justify="right")
         self.combobox_payload = ttk.Combobox(master=self.widget_frame,
                                              values=command_builder.PAYLOADS, width=25)
+        self.combobox_payload.current(1)
 
         # row 3: exe format
         self.label_exe_format = ttk.Label(master=self.widget_frame, text="Executable format:", justify="right")
@@ -122,6 +123,7 @@ class GUI:
         tk.mainloop()
 
     def on_click_generate_payload(self):
+        self.label_console_output.delete('1.0', tk.END)
         self.cmd.msfvenom_path = self.var_msfvenom_exe.get()
         self.cmd.payload = self.combobox_payload.get()
         self.cmd.exe_format = self.combobox_exe_format.get()
