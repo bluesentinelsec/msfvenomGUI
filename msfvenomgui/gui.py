@@ -124,6 +124,7 @@ class GUI:
 
     def on_click_generate_payload(self):
         self.label_console_output.delete('1.0', tk.END)
+
         self.cmd.msfvenom_path = self.var_msfvenom_exe.get()
         self.cmd.payload = self.combobox_payload.get()
         self.cmd.exe_format = self.combobox_exe_format.get()
@@ -137,10 +138,9 @@ class GUI:
         self.cmd.additional_args = self.var_args.get()
 
         self.generated_command_str = self.cmd.create_build_command()
-
         self.label_console_output.insert(tk.END, self.generated_command_str)
 
-        cmd = "/bin/sh -c " + self.generated_command_str
+        cmd = f"/bin/sh -c '{self.generated_command_str}'"
         p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, close_fds=True)
         out = p.stdout.read()
         out += p.stderr.read()

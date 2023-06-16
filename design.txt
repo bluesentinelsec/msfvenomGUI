@@ -1,0 +1,8 @@
+inputs:
+
+- payload: drop down
+- lhost: entry
+- lport: entry
+- platform: radio buttons
+- arch: radio buttons
+- format: radio buttons
