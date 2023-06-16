@@ -1,10 +1,14 @@
 [tool.poetry]
 name = "msfvenomgui"
-version = "0.2.0"
+version = "0.2.1"
 description = "msfvenomgui provides a graphical UI over Metasploit's msfvenom tool."
 authors = ["bluesentinelsec <bluesentinel@protonmail.com>"]
 license = "GPL-3.0-only"
 readme = "README.md"
+
+packages = [
+    { include = "msfvenomgui" },
+]
 
 [tool.poetry.scripts]
 msfvenomgui = "msfvenomgui.main:main"
