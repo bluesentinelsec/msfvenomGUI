@@ -1,19 +1,16 @@
+import command_builder
 import tkinter as tk
-import tkinter.filedialog as fd
 import tkinter.ttk as ttk
 
-import command_builder
-
-from subprocess import Popen, PIPE, STDOUT
+from subprocess import Popen, PIPE
 
 
 class GUI:
     def __init__(self):
         self.cmd = command_builder.CommandBuilder()
-        #self.cmd.find_msfvenom()
 
         self.main_window = tk.Tk()
-        self.main_window.title = "msfvenom-gui"
+        self.main_window.title("msfvenom-gui")
 
         self.parent_frame = ttk.Frame(self.main_window)
         self.parent_frame.pack(side="left", expand=1)
@@ -37,7 +34,8 @@ class GUI:
 
         # row 4: transform format
         self.label_transform_format = ttk.Label(master=self.widget_frame, text="Transform format:", justify="right")
-        self.combobox_transform_format = ttk.Combobox(master=self.widget_frame, values=command_builder.TRANSFORM_FORMAT, width=25)
+        self.combobox_transform_format = ttk.Combobox(master=self.widget_frame, values=command_builder.TRANSFORM_FORMAT,
+                                                      width=25)
 
         # row 5: encoder
         self.label_encoder = ttk.Label(master=self.widget_frame, text="Encoding:", justify="right")
@@ -135,7 +133,6 @@ class GUI:
         self.cmd.rport = self.var_rport.get()
         self.cmd.out_file = self.var_out_file.get()
         self.cmd.additional_args = self.var_args.get()
-
 
         self.generated_command_str = self.cmd.create_build_command()
 

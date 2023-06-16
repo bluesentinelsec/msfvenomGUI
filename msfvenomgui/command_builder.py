@@ -1,5 +1,3 @@
-import os
-
 PAYLOADS = ["",
             "linux/x86/meterpreter/reverse_tcp",
             "linux/x86/meterpreter/bind_tcp",
@@ -134,12 +132,3 @@ class CommandBuilder:
         self.build_command += "\n"
 
         return self.build_command
-
-    def find_msfvenom(self):
-        print("looking for msfvenom")
-        for root, dirs, files in os.walk("/"):
-            if "msfvenom" in files:
-                self.msfvenom_path = os.path.join(root, "msfvenom")
-                print(self.msfvenom_path)
-                return
-        self.msfvenom_path = "unable to find msfvenom"
