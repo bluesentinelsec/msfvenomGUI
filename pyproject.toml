@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "msfvenomgui"
-version = "0.2.2"
+version = "0.2.3"
 description = "msfvenomgui provides a graphical UI over Metasploit's msfvenom tool."
 authors = ["bluesentinelsec <bluesentinel@protonmail.com>"]
 license = "GPL-3.0-only"
@@ -11,7 +11,7 @@ packages = [
 ]
 
 [tool.poetry.scripts]
-msfvenomgui = "msfvenomgui.main:main"
+ msfvenomgui = "msfvenomgui.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"

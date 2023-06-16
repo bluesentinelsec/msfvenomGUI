@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from gui import GUI
+from .gui import GUI
 
 
 def main():

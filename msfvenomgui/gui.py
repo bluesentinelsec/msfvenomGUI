@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 
-from command_builder import *
+from .command_builder import *
 from subprocess import Popen, PIPE
 
 
