@@ -11,7 +11,8 @@ Demo video: *coming soon...*
 ## Prerequisites
 
 - Python 3 Interpreter
-- PIP
+- Pip3
+- Tk Python bindings
 - msfvenom
 
 ## Usage
