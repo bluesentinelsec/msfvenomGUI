@@ -12,7 +12,7 @@ Demo video: [here]()
 
 - Python 3 Interpreter
 - Pip3
-- Tk Python bindings
+- tkinter
 - msfvenom
 
 ## Usage
