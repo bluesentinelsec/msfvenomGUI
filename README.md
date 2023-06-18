@@ -1,10 +1,10 @@
 # msfvenomGUI
 
-msfvenomgui provides a graphical UI over Metasploit's msfvenom tool.
+msfvenomgui provides a graphical UI over Metasploit's [msfvenom tool](https://www.offsec.com/metasploit-unleashed/msfvenom/).
 
 This tool was created to satisfy classwork for Dakota State University's CSC-842 Security Tool Development.
 
-Demo video: *coming soon...*
+Demo video: [here]()
 
 ![image](media/msfvenomgui-screenshot.png)
 
