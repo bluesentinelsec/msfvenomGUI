@@ -25,6 +25,20 @@ pip install msfvenomgui
 msfvenomgui
 ```
 
+## Build from Source
+
+First install [Poetry](https://python-poetry.org/docs/) for your platform.
+
+Once Poetry is intalled, run the following commands from the msfvenom root folder:
+
+```bash
+# install needed dependencies
+poetry install
+
+# run msfvenomgui
+poetry run msfvenomgui
+```
+
 ## Future Work
 
 1. Expose all payloads and executable formats
